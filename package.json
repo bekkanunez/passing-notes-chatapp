@@ -1,0 +1,20 @@
+{
+  "name": "passing-notes-chatapp",
+  "version": "1.0.0",
+  "description": "building a chat app inspired by designs of a past era",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bekkanunez/passing-notes-chatapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bekkanunez/passing-notes-chatapp/issues"
+  },
+  "homepage": "https://github.com/bekkanunez/passing-notes-chatapp#readme"
+}
