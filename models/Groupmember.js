@@ -1,14 +1,15 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-// create our  model
+// create our Group Member model
 class GroupMember extends Model {}
 
-// create fields/columns for GroupMember model
+// create fields/columns for Group Member model
 GroupMember.init(
   {
     contact_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       foreignKey: true,
       unique: true,
@@ -24,14 +25,14 @@ GroupMember.init(
     },
     joined: {
       type: "TIMESTAMP",
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      defaultValue: [sequelize.literal("CURRENT_TIMESTAMP"), "MM/DD/YYY 00:00"],
       allowNull: false,
     },
     left: {
       type: "TIMESTAMP",
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      defaultValue: [sequelize.literal("CURRENT_TIMESTAMP"), "MM/DD/YYY 00:00"],
       allowNull: false,
-    }
+    },
   },
   {
     sequelize,

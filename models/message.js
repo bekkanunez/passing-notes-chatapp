@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, DATEONLY } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create our Message model
@@ -15,19 +15,20 @@ Message.init(
       primaryKey: true,
       unique: true,
     },
-    first_name: {
+    sender_num: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    last_name: {
-      type: DataTypes.STRING,
+    text_message: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    message_sent: {
+    message_time: {
       type: "TIMESTAMP",
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      defaultValue: [sequelize.literal("CURRENT_TIMESTAMP"), "MM/DD/YYY 00:00"],
       allowNull: false,
     },
+
     conversation_id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
