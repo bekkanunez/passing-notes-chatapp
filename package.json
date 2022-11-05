@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/bekkanunez/passing-notes-chatapp/issues"
   },
-  "homepage": "https://github.com/bekkanunez/passing-notes-chatapp#readme"
+  "homepage": "https://github.com/bekkanunez/passing-notes-chatapp#readme",
+  "dependencies": {
+    "firebase": "^9.13.0"
+  }
 }
