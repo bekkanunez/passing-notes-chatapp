@@ -23,9 +23,9 @@ Contact.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // profile_pic: {
-    //   
-    // },
+    profile_pic: {
+      
+    },
     receiver_num: {
       type: DataTypes.STRING,
       allowNull: false,
