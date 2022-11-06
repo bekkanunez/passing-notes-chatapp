@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { UUIDV4, Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create our Group Member model
@@ -8,8 +8,7 @@ class GroupMember extends Model {}
 GroupMember.init(
   {
     contact_id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.STRING,
       allowNull: false,
       foreignKey: true,
       unique: true,
@@ -17,18 +16,18 @@ GroupMember.init(
 
     conversation_id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: UUIDV4,
       autoIncrement: true,
       allowNull: false,
       foreignKey: true,
       unique: true,
     },
-    joined: {
+    joined_time: {
       type: "TIMESTAMP",
       defaultValue: [sequelize.literal("CURRENT_TIMESTAMP"), "MM/DD/YYY 00:00"],
       allowNull: false,
     },
-    left: {
+    left_time: {
       type: "TIMESTAMP",
       defaultValue: [sequelize.literal("CURRENT_TIMESTAMP"), "MM/DD/YYY 00:00"],
       allowNull: false,

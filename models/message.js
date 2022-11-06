@@ -1,4 +1,4 @@
-const { Model, DataTypes, DATEONLY } = require("sequelize");
+const { UUIDV4, Model, DataTypes, } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create our Message model
@@ -9,7 +9,7 @@ Message.init(
   {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: UUIDV4,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,

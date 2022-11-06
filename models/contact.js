@@ -8,8 +8,7 @@ class Contact extends Model {}
 Contact.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.STRING,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
@@ -23,9 +22,9 @@ Contact.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    profile_pic: {
+    // profile_pic: {
       
-    },
+    // },
     receiver_num: {
       type: DataTypes.STRING,
       allowNull: false,
