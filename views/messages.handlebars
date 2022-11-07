@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg justify-content-end">
+  {{! Needs logout functionality }}
+  <button id="logout" class="btn bg-dark text-white mx-2">
+    Logout
+  </button>
+</nav>
+
+<div class="messages row col-12">
+  <h1 class="justify-content-center row col-12">Passing Notes</h1>
+  <div class="card col-4" style="width: 18rem">
+    <div class="card-body">
+      {{! Future development? Add search functionality within messages? }}
+      <form class="search-form">
+        <h4>Search Notes</h4>
+        <span>
+          <input type="text" />
+          <button type="submit" class="btn btn-primary mb-2">
+            Search
+          </button>
+        </span>
+      </form>
+      <div class="private-notes mt-5">
+        <h4>Private Notes</h4>
+        <ul>
+          <li>Other User</li>
+          <li>User2</li>
+          <li>BFF</li>
+        </ul>
+      </div>
+      <div class="community-notes mt-5">
+        <h4>Community Notes</h4>
+        <ul>
+          <li>Cooking</li>
+          <li>Coding</li>
+          <li>Puppies</li>
+          <li>Art</li>
+          <li>The 90s</li>
+          <li>Alt Rock</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{! Needs functionality to display messages and usernames }}
+  <ul class="message-list d-flex-inline col-8">
+    <li class="user1 bg-secondary text-white">message</li>
+    <li class="user2 bg-dark text-white">message</li>
+    <li class="user1 bg-secondary text-white">message</li>
+    <li class="user2 bg-dark text-white">message</li>
+    <li class="user1 bg-secondary text-white">message</li>
+    <li class="user2 bg-dark text-white">message</li>
+    <li class="user1 bg-secondary text-white">message</li>
+    <li class="user2 bg-dark text-white">message</li>
+    <li class="user1 bg-secondary text-white">message</li>
+    <li class="user2 bg-dark text-white">message</li>
+    <li class="user1 bg-secondary text-white">message</li>
+  </ul>
+</div>
