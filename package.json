@@ -8,7 +8,7 @@
     "start": "node server.js",
     "seed": "node seed.js",
     "watch": "nodemon server.js",
-    "build": "webpack --mode=development"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
