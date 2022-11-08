@@ -64,18 +64,18 @@ loginBtn.addEventListener('click', (e) => {
 
 //logs user out
 //error somewhere
-const logoutBtn = document.querySelector('#logout')
-logoutBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    signOut(auth) 
-        .then (() => {
-        console.log('You have successfully signed out')
-    })
-    .catch((err) => {
-        console.log(err);
-    }
+// const logoutBtn = document.querySelector('#logout')
+// logoutBtn.addEventListener('click', (e) => {
+//     e.preventDefault()
+//     signOut(auth) 
+//         .then (() => {
+//         console.log('You have successfully signed out')
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     }
 
-    })
+//     })
 
 
 // auth.onAuthStateChanged(user => {
