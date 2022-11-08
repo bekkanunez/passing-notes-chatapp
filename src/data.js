@@ -16,16 +16,9 @@ import {
   serverTimestamp
 } from "firebase/database";
 
-//import other Firebase services
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const firebase = getFirestore(app);
-
-//Get database reference
-const database = getDatabase(app);
-
 
 // Get a list of cities from your database
 async function getCities(db) {
@@ -48,10 +41,9 @@ const firebaseConfig = {
 };
 
 //write data and save specific existing data
-function writeUserData(userId, name, email, imageUrl) {
-
+function writeUserData(name, email, imageUrl) {
 const db = getDatabase();
-const reference = ref(db, "users/" + userId);
+const reference = ref(db, "users/");
 set(reference, {
   username: name,
   email: email,
@@ -103,9 +95,11 @@ set(ref(db, 'users/' + userId), {
 })
 .then(() => {
   // Data saved successfully!
+  console.log("Saved Succesfully!")
 })
 .catch((err) => {
   // The write failed...
+  console.log(err)
 });
 
   //Reading and Writing lists
