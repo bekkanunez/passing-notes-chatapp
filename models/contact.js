@@ -25,10 +25,11 @@ Contact.init(
     // profile_pic: {
       
     // },
-    receiver_num: {
+    receiver_email: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      validate: {
+            isEmail: true,
+      }  
     },
   },
   {

@@ -1,14 +1,20 @@
+root {
+  font-family: "Caveat", cursive;
+}
+
 body {
   background-image: url("../img/notebook-paper_GJE8FAwO_SB_PM.jpeg");
 }
+h1 {
+  font-family: "Caveat", cursive;
+}
 
-#community .message-list {
-  color: #555;
-  font-size: 22px;
-  padding: 0 !important;
-  width: 500px;
-  font-family: courier, monospace;
-  border: 1px solid #dedede;
+.login-card {
+  height: 400px;
+}
+
+.signup-card {
+  height: 400px;
 }
 
 .message-list li {
@@ -18,9 +24,25 @@ body {
   height: auto;
   padding: 30px;
   text-transform: capitalize;
+  font-family: "Caveat", cursive;
 }
 
 .message-list li:hover {
   background-color: #f0f0f0;
   transition: all 0.2s;
+}
+
+#welcome {
+  height: 450px;
+  padding-top: 70px;
+  margin-top: 90px;
+}
+
+#community .message-list {
+  color: #555;
+  font-size: 22px;
+  padding: 0 !important;
+  width: 500px;
+  font-family: "Caveat", cursive;
+  border: 1px solid #dedede;
 }
