@@ -5,6 +5,7 @@ module.exports = {
   mode: 'development',
   // The entry point file 
   entry: './src/index.js',
+  entry: './src/data.js',
   // The location of the build folder
   output: {
     path: path.resolve(__dirname, 'dist'),
