@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { message } = require('../../models');
+const { Message } = require('../../models');
 
 router.get('/', (req, res) => {
     readFromFile('./databse').then((data) => res.json(JSON.parse(data)));
