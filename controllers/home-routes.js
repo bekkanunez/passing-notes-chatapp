@@ -1,5 +1,4 @@
-const router = require('express').Router();
-
+const router = require("express").Router();
 
 router.get('/messages', (req, res) => {
     if (req.session.logged_in) {
@@ -11,5 +10,6 @@ router.get('/messages', (req, res) => {
   });
 
 module.exports = router;
+
 
 
