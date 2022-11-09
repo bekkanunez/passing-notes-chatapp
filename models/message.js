@@ -1,4 +1,4 @@
-const { UUIDV4, Model, DataTypes, } = require("sequelize");
+const { UUIDV4, Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create our Message model
@@ -32,7 +32,7 @@ Message.init(
     conversation_id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      autoIncrement: true,
+      // autoIncrement: true,
       allowNull: false,
       foreignKey: true,
       unique: true,

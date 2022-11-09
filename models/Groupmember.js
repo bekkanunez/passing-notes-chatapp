@@ -17,7 +17,7 @@ GroupMember.init(
     conversation_id: {
       type: DataTypes.UUID,
       defaultValue: UUIDV4,
-      autoIncrement: true,
+      // autoIncrement: true,
       allowNull: false,
       foreignKey: true,
       unique: true,
