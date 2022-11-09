@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const memeberRoutes = require('./member-routes');
+const memberRoutes = require('./member-routes');
 const messageRoutes = require('./message-routes');
 const contactRoutes = require('./contact-router');
 
