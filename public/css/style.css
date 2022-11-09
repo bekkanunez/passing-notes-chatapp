@@ -8,6 +8,9 @@ body {
 h1 {
   font-family: "Caveat", cursive;
 }
+h3 {
+  text-decoration: underline;
+}
 
 .login-card {
   height: 400px;
