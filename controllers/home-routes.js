@@ -1,8 +1,6 @@
 const router = require('express').Router();
 
 
-
-
 router.get('/messages', (req, res) => {
     if (req.session.logged_in) {
       res.redirect('/messages');
@@ -11,5 +9,7 @@ router.get('/messages', (req, res) => {
   
     res.render('messages');
   });
+
+module.exports = router;
 
 
