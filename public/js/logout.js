@@ -1,6 +1,5 @@
-// Fetch user route when available
 const logout = async () => {
-  const response = await fetch("/api/users/logout", {
+  const response = await fetch("/api/member-routes", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   });
