@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Groupmember } = require('../../models');
+const { GroupMember } = require('../../models');
 
 router.post('/login', async (req, res) => {
     try {
-      const memberData = await Groupmember.findOne({ where: { email: req.body.email } });
+      const memberData = await GroupMember.findOne({ where: { email: req.body.email } });
   
       if (!memberData) {
         res
