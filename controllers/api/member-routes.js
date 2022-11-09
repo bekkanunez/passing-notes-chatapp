@@ -1,9 +1,20 @@
 const router = require('express').Router();
+<<<<<<< HEAD
 const { GroupMember } = require('../../models');
 
 router.post('/login', async (req, res) => {
     try {
       const memberData = await GroupMember.findOne({ where: { email: req.body.email } });
+=======
+const { Groupmember } = require('../../models');
+const { addUser } = require('../../src/database');
+
+
+router.post('/login', async (req, res) => {
+    try {
+    //  const user = await addUser(req.body.name, req.body.lastname , req.body.email );
+      const memberData = await Groupmember.findOne({ where: { email: req.body.email } });
+>>>>>>> 556f13f (modified database.js)
   
       if (!memberData) {
         res
