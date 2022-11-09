@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const { Groupmember } = require('../../models');
+const { addUser } = require('../../src/database');
+
 
 router.post('/login', async (req, res) => {
     try {
+    //  const user = await addUser(req.body.name, req.body.lastname , req.body.email );
       const memberData = await Groupmember.findOne({ where: { email: req.body.email } });
   
       if (!memberData) {

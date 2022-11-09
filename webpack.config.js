@@ -4,8 +4,8 @@ module.exports = {
   devtool: 'eval-source-map',
   mode: 'development',
   // The entry point file 
-  entry: './src/index.js',
-  entry: './src/data.js',
+  // entry: './src/index.js',
+  entry: './src/database.js',
   // The location of the build folder
   output: {
     path: path.resolve(__dirname, 'dist'),
