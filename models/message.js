@@ -9,7 +9,7 @@
 //   {
 //     id: {
 //       type: DataTypes.INTEGER,
-//       // defaultValue: UUIDV4,
+//       defaultValue: UUIDV4,
 //       autoIncrement: true,
 //       allowNull: false,
 //       primaryKey: true,
@@ -23,19 +23,10 @@
 //       type: DataTypes.TEXT,
 //       allowNull: false,
 //     },
-//     // message_time: {
-//     //   type: "TIMESTAMP",
-//     //   defaultValue: [sequelize.literal("CURRENT_TIMESTAMP"), "MM/DD/YYY 00:00"],
-//     //   allowNull: false,
-//     // },
-
-//     conversation_id: {
-//       type: DataTypes.UUID,
-//       defaultValue: DataTypes.UUIDV4,
-//       // autoIncrement: true,
+//     message_time: {
+//       type: "TIMESTAMP",
+//       defaultValue: [sequelize.literal("CURRENT_TIMESTAMP"), "MM/DD/YYY 00:00"],
 //       allowNull: false,
-//       foreignKey: true,
-//       unique: true,
 //     },
 //   },
 //   {
