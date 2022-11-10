@@ -9,10 +9,6 @@ import { getAuth,
     signOut,
 } from "firebase/auth";
 
-// import { getMessaging,
-//     getToken,
-//     onMessage,
-// } from "firebase/messaging";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCs1cBiUxFFoG5NS-Cx7x0hfnZui0F32UU",
@@ -31,11 +27,7 @@ initializeApp(firebaseConfig);
 
 const auth = getAuth();
 const user = auth.currentUser;
-//signs user up
-//Add username form back
-//get query selector value
-//Pass in result as parameter in promise
-//add result under promise
+
 const signUpBtn = document.getElementById('create-btn')
 signUpBtn.addEventListener('click', (e) => {
     e.preventDefault()
@@ -48,47 +40,72 @@ signUpBtn.addEventListener('click', (e) => {
         .then((userCredential) => {
             // const displayName = user.firstName + user.lastName;
             console.log(userCredential.user + ' has successfully created an account.')
-    })  .catch((err) => {
+        
+     }) //.then((response) => {
+    //         response = fetch('/api/member/login', {
+    //             method: 'POST',
+    //             body: JSON.stringify({ email, password, firstName, lastName }),
+    //             headers: { 'Content-Type': 'application/json' },
+    //         })
+    //         if (response.ok) {
+    //             document.location.replace("/");
+    //           } 
+    //     })
+        .catch((err) => {
+            console.log(err.message)
         // const errorMessage = document.createElement('p').innerHTML = err.message
         // password.appendChild(errorMessage);
-    })
-});
+        })
+})
+
 
 
 //logs user in
-const loginBtn = document.querySelector('#login-btn')
+const loginBtn = document.getElementById('#login-btn')
 loginBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    const email = document.querySelector('#login-email').value
-    const password = document.querySelector('#login-pwd').value
+    const email = document.querySelector('#login-email').value;
+    const password = document.querySelector('#login-pwd').value;
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         
         console.log(userCredential.user + 'is signed in')
-    })
+    })//if this doesnt work add if after .then
+    // .then((response) => {
+    //     response = fetch('/api/member/login', {
+    //         method: 'POST',
+    //         body: JSON.stringify({ email, password, }),
+    //         headers: { 'Content-Type': 'application/json' },
+    //     })
+    //     if (response.ok) {
+    //         document.location.replace("/");
+    //       } 
+    // })
     .catch ((err) => {
+        console.log(err.message)
         // const errorMessage = document.createElement('p').innerHTML = err.message
         // password.appendChild(errorMessage);
     })
 })
 
 //logs u ser out
-//error somewhere
-// const logoutBtn = document.querySelector('#logout')
-// logoutBtn.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     signOut(auth) 
-//         .then (() => {
-//         console.log('You have successfully signed out')
-//     })
-//     .catch((err) => {
-//         const errorMessage = document.createElement('p').innerHTML = err.message
-//         logoutBtn.appendChild(errorMessage);
-//     })
+const logoutBtn = document.getElementById('logout')
+logoutBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    signOut(auth) 
+        .then (() => {
+        console.log('You have successfully signed out')
+    })
+    .catch((err) => {
+        console.log(err.message);
+        // const errorMessage = document.createElement('p').innerHTML = err.message
+        // logoutBtn.appendChild(errorMessage);
+    })
 
-// })
-//
+})
 
+
+// const displayName = document.getElementById('welcome').innerHTML = 'Welcome: ' + firstName.user;
 
 
 // auth.onAuthStateChanged(user => {
@@ -101,21 +118,3 @@ loginBtn.addEventListener('click', (e) => {
 
 
 
-// const messaging = getMessaging(app);
-// const token = getToken(app);
-
-// messaging.requestPermission()
-//     .then(() => {
-//         console.log('Access Granted');
-//          return messaging.token();
-//     })
-//     .then(() => {
-//         //save to db
-//         console.log(token);
-//     }) .catch((err) => {
-//         console.log ('Access Denied')
-//     })
-// //if webpage is open, notification will be sent on the webpage
-// messaging.onMessage((payload)=> {
-//     console.log('')
-// });
