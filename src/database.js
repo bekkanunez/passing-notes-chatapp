@@ -1,20 +1,33 @@
-// import { initializeApp } from "firebase/app";
+// // import { initializeApp } from "firebase/app";
 
-import { initializeApp } from "firebase/app";
+// import { initializeApp } from require('firebase/app')
+
+// //create firebase database//
+// import {
+//   getFirestore,
+//   collection,
+//   addDoc,
+//   deleteUser,
+//   updateUser,
+//   getUserById,
+//   deleteNoteGroup,
+//   deleteNote,
+//   serverTimestamp
+// } from "firebase/firestore";
+
+import { initializeApp } from require('firebase/app')
 
 //create firebase database//
 import {
   getFirestore,
   collection,
   addDoc,
-  deleteDoc,
-  updateDoc,
-  getDocs,
-  getDoc,
-  doc,
-  query,
-  where,
-  serverTimestamp,
+  deleteUser,
+  updateUser,
+  getUserById,
+  deleteNoteGroup,
+  deleteNote,
+  serverTimestamp
 } from "firebase/firestore";
 
 //Firbase configuration, returns a firebase app instance which allows the firebase sdk to connect to our specific firebase backend//
@@ -26,19 +39,22 @@ const firebaseConfig = {
   storageBucket: "passing-notes-29428.appspot.com",
   messagingSenderId: "673359625270",
   appId: "1:673359625270:web:8389ceb82a4d5633d3ac97",
-  measurementId: "G-F5LWHZ3LLV",
+  measurementId: "G-F5LWHZ3LLV"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// export async function addUser(firstName, lastName, email) {
+//   try {
+//     const docRef = await addDoc(collection(db, "users"), {
+//       firstName,
+//       lastName,
+//       email,
+//     });
+//     console.log("User created with ID: ", docRef);
 
-// // Get a list of cities from your database
-// async function getCities(db) {
-//   const citiesCol = collection(db, "cities");
-//   const citySnapshot = await getDocs(citiesCol);
-//   const cityList = citySnapshot.docs.map((doc) => doc.data());
-//   return cityList;
+//     return docRef;
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
 // }
 
 export async function addUser(firstName, lastName, email) {
@@ -48,7 +64,7 @@ export async function addUser(firstName, lastName, email) {
       lastName,
       email,
     });
-    console.log("User created with ID: ", docRef.id);
+    console.log("User created with ID: ", docRef);
 
     return docRef;
   } catch (e) {
@@ -57,53 +73,49 @@ export async function addUser(firstName, lastName, email) {
 }
 
 async function deleteTheUser(userId) {
-  try {
-    await deleteDoc(doc(db, "users", userId));
-
-    console.log(`User ${userId} deleted`);
-  } catch (e) {
-    console.error("Error deleting user: ", e);
+  // TODO: delete user by id
+    try {
+      const deleteUserRef = await deleteUser(collection(db, "userId"), {
+        userId
+      });
+      console.log("Deleted user by ID: ", deleteUserRef.id);
+  
+      return deleteUserRef;
+    } catch (e) {
+      console.error("Error deleting user: ", e);
+    }
   }
-}
+
 
 async function updateTheUser(userId, body) {
-  //   // body:
-  //   // {firstName, lastName, email}
+//   // TODO: update a user by id with the body data
+//   // body:
+//   // {firstName, lastName, email}
   try {
-    const updateUserRef = await doc(db, "users", userId);
-
-    await updateDoc(updateUserRef, body);
-    console.log(`Updated user ${userId}`, body);
-
-    // return updateUserRef;
-  } catch (e) {
-    console.error("Error updating user: ", e);
-  }
+      const updateUserRef = await updateUser(collection(db, "userId", "body"), {
+        userId,
+        body: {
+        firstName,
+        lastName,
+        email}
+      });
+      console.log("Updated user by ID: ", updateUserRef.id, body);
+  
+      return updateUserRef;
+    } catch (e) {
+      console.error("Error updating user: ", e);
+    }
 }
 
-async function getUserById(id) {
-  console.log('getting user by id - ', id)
-  const docRef = doc(db, "users", id);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
-}
-
-async function getUserByEmail(email) {
+async function getUserThenById(userId) {
+//   // TODO: get a user doc by userId
   try {
-    const q = query(collection(db, "users"), where("email", "==", email));
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+    const getUserRef = await getUserById(collection(db, "userId"), {
+      userId
     });
+    console.log("Found user by ID: ", getUserRef.id);
+
+    return docRef;
   } catch (e) {
     console.error("Error finding user: ", e);
   }
@@ -112,7 +124,7 @@ async function getUserByEmail(email) {
 async function addNoteGroup(name) {
   try {
     const docRef = await addDoc(collection(db, "group"), {
-      name,
+      name
     });
     console.log("Group created with ID: ", docRef.id);
 
@@ -123,13 +135,18 @@ async function addNoteGroup(name) {
 }
 
 async function deleteTheNoteGroup(noteGroupId) {
-   try {
-    await deleteDoc(doc(db, "group", noteGroupId));
+//   // TODO: delete note group id
+  try {
+    const deleteNoteGroupRef = await deleteNoteGroup(collection(db, "noteGroupId"), {
+      noteGroupId
+    });
+    console.log("Deleted note group with ID: ", deleteNoteGroupRef.id);
 
-    console.log(`The note group ${noteGroupId} deleted`);
+    return docRef;
   } catch (e) {
-    console.error("Error deleting the note group: ", e);
+    console.error("Error deleting document: ", e);
   }
+
 }
 
 async function addNotes(type, groupId, userId, message) {
@@ -139,7 +156,7 @@ async function addNotes(type, groupId, userId, message) {
       groupId,
       userId,
       message,
-      createdDate: serverTimestamp(),
+      createdDate: serverTimestamp()
     });
     console.log("Note created with ID: ", docRef.id);
   } catch (e) {
@@ -148,17 +165,23 @@ async function addNotes(type, groupId, userId, message) {
 }
 
 async function deleteTheNote(noteId) {
+  // TODO: delete note
   try {
-    await deleteDoc(doc(db, "notes", noteId));
+    const deleteNoteRef = await deleteNote(collection(db, "noteId"), {
+      noteId
+    });
+    console.log("Deleted note with ID: ", deleteNoteRef.id);
 
-    console.log(`The note ${noteId} deleted`);
+    return docRef;
   } catch (e) {
-    console.error("Error deleting the note: ", e);
+    console.error("Error deleting document: ", e);
   }
 }
 
+
 async function run() {
-  const user = await addUser(firstName, lastName, email);
+  const user = await addUser("Penelope2", "Leung2", "penguin812@gmail2.com");
+  console.log('user', user)
 
   const bffGroup = await addNoteGroup('My BFF');
   const otherUserGroup = await addNoteGroup('Other User');
@@ -170,26 +193,29 @@ async function run() {
   const the90sGroup = await addNoteGroup('The 90s');
   const altRockGroup = await addNoteGroup('Alt Rook');
 
-  await addNotes('private', otherUserGroup.id, user.id, "Other User Group");
-  await addNotes('private', bffGroup.id, user.id, "BFF Group");
-  await addNotes('private', user2Group.id, user.id, "User2 Group Note");
-  await addNotes('public', cookingGroup.id, user.id, "Cooking Group Note");
-  await addNotes('public', codingGroup.id, user.id, "Coding Group Note");
-  await addNotes('public', puppiesGroup.id, user.id, "Puppies Group Note");
-  await addNotes('public', artGroup.id, user.id, "Art Group Note");
-  await addNotes('public', the90sGroup.id, user.id, "The 90s Group Note");
-  await addNotes('public', altRockGroup.id, user.id, "Alt Rock Group Note");
+
+  await addNotes('private', otherUserGroup.id, user.id, "This is a private notes");
+  await addNotes('private', bffGroup.id, user.id, "This is a private notes");
+  await addNotes('private', user2Group.id, user.id, "This is a private notes");
+  await addNotes('public', cookingGroup.id, user.id, "This is a public notes");
+  await addNotes('public', codingGroup.id, user.id, "This is a public notes");
+  await addNotes('public', puppiesGroup.id, user.id, "This is a public notes");
+  await addNotes('public', artGroup.id, user.id, "This is a public notes");
+  await addNotes('public', the90sGroup.id, user.id, "This is a public notes");
+  await addNotes('public', altRockGroup.id, user.id, "This is a public notes");
   await deleteNote(note.id);
-  await updateTheUser(user.id, {firstName: 'first', lastName: 'last'});
   await deleteTheUser(user.id);
-  await getUserByEmail(email);
-  await getUserById(user.id);
-  await deleteTheNote(noteGroup.id);
-  await deleteTheNoteGroup(notes.id);
+  await updateTheUser(user.id, firstName.id, lastName.id, email.id);
+  await getUserThenById(user.id);
+  await deleteTheNoteGroup(noteGroup.id);
+  await addUser(firstName.id, lastName.id, email.id);
   await addNoteGroup(name.id);
+
 }
 
 run();
+
+
 
 // //Read data at a path and listen for changes
 // const starCountRef = ref(db, 'posts/' + postId + '/starCount');
@@ -197,6 +223,7 @@ run();
 //   const data = snapshot.val();
 //   updateStarCount(postElement, data);
 // });
+
 
 //   //Callback function
 
@@ -214,6 +241,9 @@ run();
 //   console.log(err)
 // });
 
+
+
+
 // //if receive an offline message
 // const presenceRef = ref(db, "disconnectmessage");
 // // Write a string when this client loses connection
@@ -224,7 +254,7 @@ run();
 //       console.error("could not establish onDisconnect event", err);
 //     }
 //   });
-
+  
 //   //Detecting Connection State
 //   const connectedRef = ref(db, ".info/connected");
 // onValue(connectedRef, (snap) => {
@@ -233,42 +263,55 @@ run();
 //   } else {
 //     console.log("not connected");
 //   }
-// });
+// }
 
-// //Server Timestamps (last online reference)
-// const userLastOnlineRef = ref(db, "users/joe/lastOnline");
-// onDisconnect(userLastOnlineRef).set(serverTimestamp());
+// async function addNoteGroup(name) {
+//   try {
+//     const docRef = await addDoc(collection(db, "group"), {
+//       name
+//     });
+//     console.log("Group created with ID: ", docRef.id);
 
-// //local reported time
-// const offsetRef = ref(db, ".info/serverTimeOffset");
-// onValue(offsetRef, (snap) => {
-//   const offset = snap.val();
-//   const estimatedServerTimeMs = new Date().getTime() + offset;
-//     return estimatedServerTimeMs;
-// });
+//     return docRef;
+//   } catch (e) {
+//     console.error("Error adding group note: ", e);
+//   }
+// }
 
-// //last seen online time
+// //last seen online time 
 
-// // Since I can connect from multiple devices or browser tabs, we store each connection instance separately
-// // any time that connectionsRef's value is null (i.e. has no children) I am offline
-// const myConnectionsRef = ref(db, 'users/joe/connections');
+//     return docRef;
+//   } catch (e) {
+//     console.error("Error deleting document: ", e);
+//   }
 
-// // stores the timestamp of my last disconnect (the last time I was seen online)
-// const lastOnlineRef = ref(db, 'users/joe/lastOnline');
+// }
 
-// onValue(connectedRef, (snap) => {
-//   if (snap.val() === true) {
-//     // We're connected (or reconnected)! Do anything here that should happen only if online (or on reconnect)
-//     const con = push(myConnectionsRef);
+// async function addNotes(type, groupId, userId, message) {
+//   try {
+//     const docRef = await addDoc(collection(db, "notes"), {
+//       type,
+//       groupId,
+//       userId,
+//       message,
+//       createdDate: serverTimestamp()
+//     });
+//     console.log("Note created with ID: ", docRef.id);
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
+// }
 
-//     // When I disconnect, remove this device
-//     onDisconnect(con).remove();
+// async function deleteTheNote(noteId) {
+//   // TODO: delete note
+//   try {
+//     const deleteNoteRef = await deleteNote(collection(db, "noteId"), {
+//       noteId
+//     });
+//     console.log("Deleted note with ID: ", deleteNoteRef.id);
 
-//     // Add this device to my connections list
-//     // this value could contain info about the device or a timestamp too
-//     set(con, true);
-
-//     // When I disconnect, update the last time I was seen online
-//     onDisconnect(lastOnlineRef).set(serverTimestamp());
+//     return docRef;
+//   } catch (e) {
+//     console.error("Error deleting document: ", e);
 //   }
 // });
