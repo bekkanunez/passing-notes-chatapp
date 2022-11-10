@@ -118,4 +118,3 @@ logoutBtn.addEventListener('click', (e) => {
 
 
 
-module.exports = router;
