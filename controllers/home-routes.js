@@ -6,7 +6,9 @@ router.get('/messages', (req, res) => {
       return;
     }
   
-    res.render('messages');
+    const templateData = {firstName: 'My first name', email: 'admin@gmail.com'};
+
+    res.render('messages', templateData);
   });
 
 module.exports = router;
