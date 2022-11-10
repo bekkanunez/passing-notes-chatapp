@@ -1,11 +1,11 @@
-const router = require("express").Router();
+// const router = require("express").Router();
 
-const memberRoutes = require("./member-routes");
-const messageRoutes = require("./message-routes");
-// const contactRoutes = require('./contact-router');
+// const memberRoutes = require("./member-routes");
+// const messageRoutes = require("./message-routes");
+// // const contactRoutes = require("./contact-router");
 
-router.use("/member", memberRoutes);
-router.use("/message", messageRoutes);
-// router.use("/contact", contactRoutes);
+// router.use("/member", memberRoutes);
+// router.use("/message", messageRoutes);
+// // router.use("/contact", contactRoutes);
 
-module.exports = router;
+// module.exports = router;
