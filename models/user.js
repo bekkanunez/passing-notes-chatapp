@@ -1,14 +1,29 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, UUIDV4 } = require("sequelize");
 const sequelize = require("../config/connection");
 
+// create our User model
 class User extends Model {}
 
+// create fields/columns for User model
 User.init(
   {
-    email: {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+    },
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    userEmail: {
+      type: DataTypes.STRING,
       validate: {
         isEmail: true,
       },
@@ -20,7 +35,6 @@ User.init(
   },
   {
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "user",
