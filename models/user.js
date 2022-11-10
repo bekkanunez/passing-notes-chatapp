@@ -21,7 +21,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+   
     userEmail: {
       type: DataTypes.STRING,
       validate: {
@@ -29,9 +29,9 @@ User.init(
       },
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
   },
   {
     sequelize,
