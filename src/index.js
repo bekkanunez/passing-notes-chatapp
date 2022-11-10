@@ -30,19 +30,27 @@ initializeApp(firebaseConfig);
 
 
 const auth = getAuth();
-
+const user = auth.currentUser;
 //signs user up
+//Add username form back
+//get query selector value
+//Pass in result as parameter in promise
+//add result under promise
 const signUpBtn = document.getElementById('create-btn')
 signUpBtn.addEventListener('click', (e) => {
     e.preventDefault()
     const email = document.getElementById('create-email').value;
     const password = document.getElementById('create-pwd').value;
-    console.log(email, password);
+    const firstName = document.getElementById('create-first-name').value;
+    const lastName = document.getElementById('create-last-name').value;
+    console.log(email, password, firstName, lastName);
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+            // const displayName = user.firstName + user.lastName;
             console.log(userCredential.user + ' has successfully created an account.')
     })  .catch((err) => {
-        console.log(err);
+        // const errorMessage = document.createElement('p').innerHTML = err.message
+        // password.appendChild(errorMessage);
     })
 });
 
@@ -55,14 +63,16 @@ loginBtn.addEventListener('click', (e) => {
     const password = document.querySelector('#login-pwd').value
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+        
         console.log(userCredential.user + 'is signed in')
     })
     .catch ((err) => {
-        console.log(err);
+        // const errorMessage = document.createElement('p').innerHTML = err.message
+        // password.appendChild(errorMessage);
     })
 })
 
-//logs user out
+//logs u ser out
 //error somewhere
 // const logoutBtn = document.querySelector('#logout')
 // logoutBtn.addEventListener('click', (e) => {
@@ -72,10 +82,13 @@ loginBtn.addEventListener('click', (e) => {
 //         console.log('You have successfully signed out')
 //     })
 //     .catch((err) => {
-//         console.log(err);
-//     }
-
+//         const errorMessage = document.createElement('p').innerHTML = err.message
+//         logoutBtn.appendChild(errorMessage);
 //     })
+
+// })
+//
+
 
 
 // auth.onAuthStateChanged(user => {
@@ -106,5 +119,3 @@ loginBtn.addEventListener('click', (e) => {
 // messaging.onMessage((payload)=> {
 //     console.log('')
 // });
-
-// 
