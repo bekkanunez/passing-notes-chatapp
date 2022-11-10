@@ -41,16 +41,16 @@ signUpBtn.addEventListener('click', (e) => {
             // const displayName = user.firstName + user.lastName;
             console.log(userCredential.user + ' has successfully created an account.')
         
-     }) //.then((response) => {
-    //         response = fetch('/api/member/login', {
-    //             method: 'POST',
-    //             body: JSON.stringify({ email, password, firstName, lastName }),
-    //             headers: { 'Content-Type': 'application/json' },
-    //         })
-    //         if (response.ok) {
-    //             document.location.replace("/");
-    //           } 
-    //     })
+      }) .then((response) => {
+             response = fetch('/api/member/login', {
+                 method: 'POST',
+                 body: JSON.stringify({ email, password, firstName, lastName }),
+               headers: { 'Content-Type': 'application/json' },
+            })
+            if (response.ok) {
+                 document.location.replace("/");
+              } 
+         })
         .catch((err) => {
             console.log(err.message)
         // const errorMessage = document.createElement('p').innerHTML = err.message
@@ -71,16 +71,16 @@ loginBtn.addEventListener('click', (e) => {
         
         console.log(userCredential.user + 'is signed in')
     })//if this doesnt work add if after .then
-    // .then((response) => {
-    //     response = fetch('/api/member/login', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ email, password, }),
-    //         headers: { 'Content-Type': 'application/json' },
-    //     })
-    //     if (response.ok) {
-    //         document.location.replace("/");
-    //       } 
-    // })
+    .then((response) => {
+        response = fetch('/api/member/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password, }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        if (response.ok) {
+            document.location.replace("/");
+          } 
+    })
     .catch ((err) => {
         console.log(err.message)
         // const errorMessage = document.createElement('p').innerHTML = err.message
@@ -118,3 +118,4 @@ logoutBtn.addEventListener('click', (e) => {
 
 
 
+module.exports = router;
