@@ -12,24 +12,28 @@ router.get("/messages", (req, res) => {
   res.render("messages", templateData);
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const userDataDb = await User.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["email", "password"],
-        },
-      ],
-    });
-
-    const users = userDataDb.map((User) => users.get({ plain: true }));
-    res.render("homepage", { loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+router.get(`/`, async (req, res) => {
+  res.render(`homepage`);
 });
+
+// router.get("/homepage", async (req, res) => {
+//   try {
+//     // const userDataDb = await User.findAll({
+//     //   include: [
+//     //     {
+//     //       model: User,
+//     //       attributes: [`firstname`, `lastname`, `userEmail`],
+//     //     },
+//     //   ],
+//     // });
+
+//     // const users = userDataDb.map((User) => User.get({ plain: true }));
+//     res.render("homepage", { users });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
