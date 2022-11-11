@@ -27,38 +27,37 @@ initializeApp(firebaseConfig);
 
 const auth = getAuth();
 const user = auth.currentUser;
+//create user
 
-const signUpBtn = document.getElementById('create-btn')
-signUpBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    const email = document.getElementById('create-email').value;
-    const password = document.getElementById('create-pwd').value;
-    const firstName = document.getElementById('create-first-name').value;
-    const lastName = document.getElementById('create-last-name').value;
-    console.log(email, password, firstName, lastName);
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // const displayName = user.firstName + user.lastName;
-            console.log(userCredential.user + ' has successfully created an account.')
-        
-      }) .then((response) => {
-             response = fetch('/api/member/login', {
-                 method: 'POST',
-                 body: JSON.stringify({ email, password, firstName, lastName }),
-               headers: { 'Content-Type': 'application/json' },
-            })
-            if (response.ok) {
-                 document.location.replace("/");
-              } 
-         })
-        .catch((err) => {
-            console.log(err.message)
-        // const errorMessage = document.createElement('p').innerHTML = err.message
-        // password.appendChild(errorMessage);
-        })
-})
-
-
+  const signUpBtn = document.getElementById('create-btn')
+  signUpBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      const email = document.getElementById('create-email').value;
+      const password = document.getElementById('create-pwd').value;
+      const firstName = document.getElementById('create-first-name').value;
+      const lastName = document.getElementById('create-last-name').value;
+      console.log(email, password, firstName, lastName);
+      createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+              // const displayName = user.firstName + user.lastName;
+              console.log(userCredential.user + ' has successfully created an account.')
+          
+        }) .then((response) => {
+               response = fetch('/api/messages/', {
+                   method: 'POST',
+                   body: JSON.stringify({ email, password, firstName, lastName }),
+                 headers: { 'Content-Type': 'application/json' },
+              })
+              if (response.ok) {
+                   document.location.replace("/");
+                } 
+           })
+          .catch((err) => {
+              console.log(err.message)
+          // const errorMessage = document.createElement('p').innerHTML = err.message
+          // password.appendChild(errorMessage);
+          })
+  })
 
 //logs user in
 const loginBtn = document.getElementById('#login-btn')
@@ -72,7 +71,7 @@ loginBtn.addEventListener('click', (e) => {
         console.log(userCredential.user + 'is signed in')
     })//if this doesnt work add if after .then
     .then((response) => {
-        response = fetch('/api/member/login', {
+        response = fetch('/api/messages', {
             method: 'POST',
             body: JSON.stringify({ email, password, }),
             headers: { 'Content-Type': 'application/json' },
@@ -88,14 +87,21 @@ loginBtn.addEventListener('click', (e) => {
     })
 })
 
-//logs u ser out
+// //logs u ser out
 const logoutBtn = document.getElementById('logout')
 logoutBtn.addEventListener('click', (e) => {
     e.preventDefault()
     signOut(auth) 
-        .then (() => {
-        console.log('You have successfully signed out')
-    })
+    .then((response) => {
+      response = fetch('/api/messages', {
+          method: 'POST',
+          body: JSON.stringify({ email, password, }),
+          headers: { 'Content-Type': 'application/json' },
+      })
+      if (response.ok) {
+          document.location.replace("/");
+        } 
+  })
     .catch((err) => {
         console.log(err.message);
         // const errorMessage = document.createElement('p').innerHTML = err.message
