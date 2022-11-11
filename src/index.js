@@ -37,7 +37,7 @@ const user = auth.currentUser;
       const firstName = document.getElementById('create-first-name').value;
       const lastName = document.getElementById('create-last-name').value;
       console.log(email, password, firstName, lastName);
-      createUserWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(auth, email, password,)
           .then((userCredential) => {
               // const displayName = user.firstName + user.lastName;
               console.log(userCredential.user + ' has successfully created an account.')
@@ -50,13 +50,12 @@ const user = auth.currentUser;
               })
               if (response.ok) {
                    document.location.replace("/");
+                }
+                else {
+                  alert("Failed to log in.");
                 } 
            })
-          .catch((err) => {
-              console.log(err.message)
-          // const errorMessage = document.createElement('p').innerHTML = err.message
-          // password.appendChild(errorMessage);
-          })
+
   })
 
 //logs user in
@@ -65,6 +64,8 @@ loginBtn.addEventListener('click', (e) => {
     e.preventDefault()
     const email = document.querySelector('#login-email').value;
     const password = document.querySelector('#login-pwd').value;
+    const firstName = document.querySelector('create-first-name').value;
+    const lastName = document.querySelector('create-last-name').value;
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         
@@ -73,18 +74,20 @@ loginBtn.addEventListener('click', (e) => {
     .then((response) => {
         response = fetch('/api/messages', {
             method: 'POST',
-            body: JSON.stringify({ email, password, }),
+            body: JSON.stringify({ email, password, firstName, lastName }),
             headers: { 'Content-Type': 'application/json' },
         })
         if (response.ok) {
             document.location.replace("/");
           } 
+          else {
+            alert("Failed to log in.");
+          }
     })
-    .catch ((err) => {
-        console.log(err.message)
+    
         // const errorMessage = document.createElement('p').innerHTML = err.message
         // password.appendChild(errorMessage);
-    })
+    
 })
 
 // //logs u ser out
@@ -100,13 +103,12 @@ logoutBtn.addEventListener('click', (e) => {
       })
       if (response.ok) {
           document.location.replace("/");
-        } 
+        }
+        else {
+          alert("Failed to log in.");
+        }
   })
-    .catch((err) => {
-        console.log(err.message);
-        // const errorMessage = document.createElement('p').innerHTML = err.message
-        // logoutBtn.appendChild(errorMessage);
-    })
+    
 
 })
 
