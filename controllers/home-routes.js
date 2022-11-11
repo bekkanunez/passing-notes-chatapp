@@ -15,15 +15,15 @@ router.get("/messages", (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const userDataDb = await User.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["email", "password"],
-        },
-      ],
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ["email", "password"],
+      //   },
+      // ],
     });
 
-    const users = userDataDb.map((User) => users.get({ plain: true }));
+    const users = userDataDb.map((user) => user.get({ plain: true }));
     res.render("homepage", { loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
