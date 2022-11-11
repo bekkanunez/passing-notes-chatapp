@@ -5,7 +5,7 @@
 //   const password = document.querySelector("#login-pwd").value.trim();
 
 //   if (email && password) {
-//     const response = await fetch("/api/member/login", {
+//     const response = await fetch("/home-routes/messages", {
 //       method: "POST",
 //       body: JSON.stringify({ email, password }),
 //       headers: { "Content-Type": "application/json" },
@@ -26,7 +26,7 @@
 //   const password = document.querySelector("#create-pwd").value.trim();
 
 //   if (email && password) {
-//     const response = await fetch("/api/member/login", {
+//     const response = await fetch("/home-routes/messages", {
 //       method: "POST",
 //       body: JSON.stringify({ email, password }),
 //       headers: { "Content-Type": "application/json" },
@@ -41,9 +41,9 @@
 // };
 
 // document
-//   .querySelector(".login-form")
-//   .addEventListener("submit", loginFormHandler);
+//   .querySelector("#login-btn")
+//   .addEventListener("click", loginFormHandler);
 
 // document
-//   .querySelector(".signup-form")
-//   .addEventListener("submit", signupFormHandler);
+//   .querySelector("#create-btn")
+//   .addEventListener("click", signupFormHandler);
