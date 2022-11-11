@@ -1,6 +1,6 @@
 # Passing-Notes-Chat-App
 
-<a href="" title="Deployed Passing Notes Chat App" target="_blank">Deployed App on Heroku</a>
+<a href="" title="Deployed Passing Notes Chat App" target="_blank">Deployed App on Heroku (Under Construction)</a>
 
 ---
 
@@ -21,13 +21,13 @@ Take a step back in time to the days of passing notes in class and AOL instant m
 
 ## Usage
 
-On the homepage, the user may choose between logging into an existing account or creating a new account.
+On the homepage, the user may choose between logging into an existing account or creating a new account. ![Screenshot1](./public/img/Passing-Notes-1.png)
 
-The user will be directed to the login page where they can enter the credentials for an existing account or create a new account.
+The user will be directed to the login page where they can enter the credentials for an existing account or create a new account. ![Screenshot2](./public/img/Passing-Notes-2.png)
 
 The user will see a pop-up which shows their authentication.
 
-The user will be directed to the messages page where they can send and receive messages.
+The user will be directed to the messages page where they can send and receive messages. ![Screenshot3](./public/img/Passing-Notes-3.png)
 
 ---
 
