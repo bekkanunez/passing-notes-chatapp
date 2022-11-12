@@ -44,28 +44,24 @@
     </div>
   </div>
   <div class="card col-8" style="width: 18rem">
-    <div class="card-body">
-      <div>
-        <input type="message" id="create-message" class="form-control" />
-      </div>
-      <a
-        href="#"
-        id="message-btn"
-        class="btn btn-primary btn-lg float-right mt-2"
-      >Send Message</a>
-    </div>
-    <ul class="message-list d-flex-inline">
-      <li class="user1 bg-secondary text-white">message</li>
-      <li class="user2 bg-dark text-white">message</li>
-      <li class="user1 bg-secondary text-white">message</li>
-      <li class="user2 bg-dark text-white">message</li>
-      <li class="user1 bg-secondary text-white">message</li>
-      <li class="user2 bg-dark text-white">message</li>
-      <li class="user1 bg-secondary text-white">message</li>
-      <li class="user2 bg-dark text-white">message</li>
-      <li class="user1 bg-secondary text-white">message</li>
-      <li class="user2 bg-dark text-white">message</li>
-      <li class="user1 bg-secondary text-white">message</li>
-    </ul>
-  </div>
+              <div class="card-body">
+                <div>
+                  <form id="message-form">
+                  <input
+                    type="text"
+                    id="create-message"
+                    class="form-control"
+                    placeholder="Send a Message"
+                  />
+                </div>
+                <button
+                  id="message-btn"
+                  class="btn btn-primary btn-lg float-right mt-2"
+                >
+                  Send
+                </button>
+                </form>
+              </div>
+              <ul class="message-list d-flex-inline" id="messages"></ul>
+            </div>
 </div>

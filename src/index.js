@@ -1,54 +1,48 @@
-console.log(firebase)
+console.log(firebase);
 const auth = firebase.auth();
-const signUpBtn = document.getElementById('signup')
-const firstName = document.getElementById('create-first-name').value;
-const email = document.getElementById('create-email').value;
-const password = document.getElementById('create-pwd').value;
+const signUpBtn = document.getElementById("create-btn");
+const firstName = document.getElementById("create-first-name").value;
+const email = document.getElementById("create-email").value;
+const password = document.getElementById("create-pwd").value;
 
-
-  
-  
-  signUpBtn.addEventListener('click', (e) => {
-  e.preventDefault()
-  auth.createUserWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-  //     Signed in 
-    var user = userCredential.user;
-     })
-     .catch((error) => {
-       var errorCode = error.code;
-       var errorMessage = error.message;
-       // ..
-   });
-    
-   })
+signUpBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      //     Signed in
+      var user = userCredential.user;
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ..
+    });
+});
 
 // signUpBtn.onclick = () => auth.createUserWithEmailAndPassword(email, password)
 
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
 
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-
-      var uid = user.uid;
-      var providerData = user.providerData;
-      // ...
-    } else {
-      // User is signed out.
-      // ...
-    }
-  });
-
+    var uid = user.uid;
+    var providerData = user.providerData;
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+  }
+});
 
 // const db = firebase.firestore();
 
-
 // auth.onAuthStateChanged((user) => {
 //   if (user) {
-    
+
 //   }
 // })
 
@@ -62,7 +56,6 @@ const password = document.getElementById('create-pwd').value;
 //     }
 //   });
 
-
 // // //logs user in
 // const loginBtn = document.getElementById('#login-btn')
 // loginBtn.addEventListener('click', (e) => {
@@ -73,7 +66,7 @@ const password = document.getElementById('create-pwd').value;
 //     const lastName = document.querySelector('create-last-name').value;
 //     signInWithEmailAndPassword(auth, email, password)
 //     .then((userCredential) => {
-        
+
 //         console.log(userCredential.user + 'is signed in')
 //     })//if this doesnt work add if after .then
 //     .then((response) => {
@@ -84,22 +77,22 @@ const password = document.getElementById('create-pwd').value;
 //         })
 //         if (response.ok) {
 //             document.location.replace("/");
-//           } 
+//           }
 //           else {
 //             alert("Failed to log in.");
 //           }
 //     })
-    
-        // const errorMessage = document.createElement('p').innerHTML = err.message
-        // password.appendChild(errorMessage);
-    
+
+// const errorMessage = document.createElement('p').innerHTML = err.message
+// password.appendChild(errorMessage);
+
 // })
 
 // // //logs u ser out
 // const logoutBtn = document.getElementById('logout')
 // logoutBtn.addEventListener('click', (e) => {
 //     e.preventDefault()
-//     signOut(auth) 
+//     signOut(auth)
 //     .then((response) => {
 //       response = fetch('/api/login', {
 //           method: 'POST',
@@ -115,9 +108,7 @@ const password = document.getElementById('create-pwd').value;
 //   })
 // })
 
-
 // const displayName = document.getElementById('welcome').innerHTML = 'Welcome: ' + firstName.user;
-
 
 // auth.onAuthStateChanged(user => {
 //     console.log(user);
@@ -125,7 +116,6 @@ const password = document.getElementById('create-pwd').value;
 //         console.log(user + ' has signed in');
 //     } else console.log(user + ' has signed out');
 // })
-
 
 // export async function addUser(firstName, lastName, email) {
 //   e.preventDefault()
@@ -150,5 +140,3 @@ const password = document.getElementById('create-pwd').value;
 // }
 // const signUpBtn = document.getElementById('create-btn')
 // signUpBtn.addEventListener('click', addUser)
-
-
