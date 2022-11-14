@@ -1,6 +1,6 @@
 # Passing-Notes-Chat-App
 
-<a href="" title="Deployed Passing Notes Chat App" target="_blank">Deployed App on Heroku (Under Construction)</a>
+<a href="https://passing-notes2022.herokuapp.com/" title="Deployed Passing Notes Chat App" target="_blank">Deployed App on Heroku (Under Construction)</a>
 
 ---
 
@@ -59,6 +59,5 @@ This app was created using the [Firebase](https://firebase.google.com/) app deve
 [Getting Started with Firebase 9 #14 - Subscribing to Auth Changes](https://www.youtube.com/watch?v=xYr-GbvqrYY&list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb&index=14)
 
 [Firebase Auth Tutorial #15- Firestore Users Collection](https://www.youtube.com/watch?v=qWy9ylc3f9U&t=389s)
-
 
 [How to Build a Chat App with Firebase](https://www.cometchat.com/tutorials/how-to-build-a-chat-app-with-firebase)
