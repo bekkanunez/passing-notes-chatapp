@@ -51,3 +51,14 @@ This app was created using the [Firebase](https://firebase.google.com/) app deve
 | Rebecca Nunez  | [Rebecca's Github](https://github.com/bekkanunez)      | rebnunez@gmail.com       |
 | Keshon Royster | [Keshon's GitHub](https://github.com/Keshon97)         | k.royster512@gmail.com   |
 | Penelope Leung | [Penelope's GitHub](https://github.com/penelope-leung) | penguin812@gmail.com     |
+
+## References
+
+[Firebase-Back to the Basics](https://www.youtube.com/watch?v=q5J5ho7YUhA&list=RDLVrQvOAnNvcNQ&index=5)
+
+[Getting Started with Firebase 9 #14 - Subscribing to Auth Changes](https://www.youtube.com/watch?v=xYr-GbvqrYY&list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb&index=14)
+
+[Firebase Auth Tutorial #15- Firestore Users Collection](https://www.youtube.com/watch?v=qWy9ylc3f9U&t=389s)
+
+
+[How to Build a Chat App with Firebase](https://www.cometchat.com/tutorials/how-to-build-a-chat-app-with-firebase)

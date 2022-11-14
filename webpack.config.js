@@ -1,11 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  devtool: 'eval-source-map',
   mode: 'development',
   // The entry point file 
-  // entry: './src/index.js',
-  entry: './src/database.js',
+  entry: './src/index.js',
   // The location of the build folder
   output: {
     path: path.resolve(__dirname, 'dist'),
